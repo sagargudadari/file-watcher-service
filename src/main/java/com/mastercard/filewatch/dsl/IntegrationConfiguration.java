@@ -30,7 +30,7 @@ public class IntegrationConfiguration {
     }
 
     @Bean
-    @InboundChannelAdapter(value = "fileInputChannel", poller = @Poller(fixedDelay = "1000"))
+    @InboundChannelAdapter(value = "fileInputChannel", poller = @Poller(fixedDelay = "10000"))
     public MessageSource<File> fileReadingMessageSource() {
         CompositeFileListFilter<File> filters = new CompositeFileListFilter<>();
         filters.addFilter(new SimplePatternFileListFilter("*.txt"));
@@ -39,6 +39,7 @@ public class IntegrationConfiguration {
         source.setDirectory(new File(ftpReadDir));
         source.setScanEachPoll(true);
         source.setUseWatchService(true);
+        source.setWatchEvents(FileReadingMessageSource.WatchEventType.CREATE);
         source.setFilter(filters);
 
         return source;
