@@ -1,13 +1,13 @@
-package com.mastercard.filewatch;
+package com.mastercard.billing.filewatcherservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class FileWatcherApplication {
 
     public static void main(String[] args){
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(FileWatcherApplication.class, args);
     }
 
 }

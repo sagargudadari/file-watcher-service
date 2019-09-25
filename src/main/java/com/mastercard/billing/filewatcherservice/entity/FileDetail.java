@@ -1,4 +1,4 @@
-package com.mastercard.filewatch.entity;
+package com.mastercard.billing.filewatcherservice.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,26 +14,27 @@ import java.util.Date;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-@Table
+@Table(name = "file_detail")
 public class FileDetail implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8043722506324881419L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    String name;
+    private String name;
 
-    String type;
+    private String type;
 
-    String location;
+    private String location;
 
-    String status;
+    @Enumerated(EnumType.STRING)
+    private FileStatus status;
 
     @CreationTimestamp
-    Date createdDate;
+    private Date created_date;
 
     @UpdateTimestamp
-    Date updadatedDate;
+    private Date updated_date;
 }
